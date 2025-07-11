@@ -33,27 +33,35 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <button>log in</button>
+        <button className="bg-slate-500 text-white text-[10px] px-2 py-1 rounded-sm">
+          log in
+        </button>
         <button onClick={openMenu}>
-          {isOpen ? <IoCloseSharp /> : <CiMenuBurger />}
+          {isOpen ? (
+            <IoCloseSharp />
+          ) : (
+            <CiMenuBurger className="cursor-pointer" />
+          )}
         </button>
         {/* Mobile Menu Overlay*/}
         {isOpen && (
-          <div className="md:hidden w-[200px] fixed top-2 right-0 bg-black/50 backdrop-blur-sm text-white rounded-sm p-2">
+          <div className="md:hidden w-[200px] fixed top-2 right-0 bg-black/65 backdrop-blur-sm text-white rounded-l-sm p-2 h-[150px]">
             <div className="flex">
-              <ul>
+              <ul className="flex flex-col gap-3 mt-2 ml-3">
                 {links.map((l) => (
                   <li key={l.id}>
                     <a href="">{l.title}</a>
                   </li>
                 ))}
                 <button
-                  className="fixed top-1 right-1"
+                  className="fixed top-1 right-1 cursor-pointer "
                   onClick={() => setIsOpen(false)}
                 >
                   <IoCloseSharp />
                 </button>
-                <button>log in</button>
+                <button className="bg-slate-400 rounded-sm text-[12px] cursor-pointer">
+                  log in
+                </button>
               </ul>
             </div>
           </div>
