@@ -45,7 +45,7 @@ const Navbar = () => {
         </button>
         {/* Mobile Menu Overlay*/}
         {isOpen && (
-          <div className="md:hidden w-[200px] fixed top-2 right-0 bg-black/65 backdrop-blur-sm text-white rounded-l-sm p-2 h-[150px]">
+          <div className="md:hidden w-[200px] fixed top-2 right-0 bg-black/65 backdrop-blur-sm text-white rounded-l-sm p-2 h-[150px] z-10">
             <div className="flex">
               <ul className="flex flex-col gap-3 mt-2 ml-3">
                 {links.map((l) => (
