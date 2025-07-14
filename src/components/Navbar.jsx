@@ -19,12 +19,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full p-2">
+    <nav className=" fixed top-0 w-full p-2 shadow-[0_4px_10px_rgba(0,0,0,0.25)] bg-white/10 backdrop-blur-sm">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div>Logo</div>
         {/*  Navbar Links Big screens*/}
-        <div className="">
+        <div className="hidden md:flex">
           <ul className="flex gap-8">
             {links.map((l) => (
               <li key={l.id}>
@@ -33,14 +33,14 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <button className="bg-slate-500 text-white text-[10px] px-2 py-1 rounded-sm">
+        <button className="bg-slate-500 text-white text-[10px] px-2 py-1 rounded-sm hidden md:block">
           log in
         </button>
-        <button onClick={openMenu}>
+        <button onClick={openMenu} className="md:hidden">
           {isOpen ? (
             <IoCloseSharp />
           ) : (
-            <CiMenuBurger className="cursor-pointer" />
+            <CiMenuBurger className="cursor-pointer md:hidden" />
           )}
         </button>
         {/* Mobile Menu Overlay*/}
