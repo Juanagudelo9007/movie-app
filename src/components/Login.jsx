@@ -18,7 +18,7 @@ const Login = () => {
     /* Register */
   }
 
-  const register = async (email, password) => {
+  const register = async (email, password, name) => {
     const userCredentials = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -29,6 +29,7 @@ const Login = () => {
     await setDoc(doc(db, "users", user.uid), {
       uid: user.uid,
       email: user.email,
+      name: name,
     });
 
     console.log("User created and saved:", user);
@@ -56,6 +57,7 @@ const Login = () => {
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
     const confirmPassword = e.target.elements.confirmPassword?.value;
+    const name = e.target.elements.name?.value;
 
     if (!isLogin) {
       if (password !== confirmPassword) {
@@ -63,7 +65,7 @@ const Login = () => {
         return;
       }
       setError("");
-      await register(email, password);
+      await register(email, password, name);
     } else {
       setError("");
       await userLogin(email, password);
@@ -77,6 +79,15 @@ const Login = () => {
           {isLogin ? "Sign in" : "Sign up"}
         </h1>
         <form className="flex flex-col gap-6" onSubmit={handlerSubmit}>
+          {!isLogin && (
+            <input
+              className="outline-1 outline-blue-800 rounded-sm p-1"
+              name="name"
+              id="name"
+              type="text"
+              placeholder="Name"
+            />
+          )}
           <input
             className="outline-1 outline-blue-800 rounded-sm p-1"
             id="email"
@@ -91,6 +102,7 @@ const Login = () => {
             type="password"
             placeholder="Password"
           />
+
           {!isLogin && (
             <input
               className="outline-1 outline-blue-800 rounded-sm p-1"
