@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
+
 const Search = ({ setMovies }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
@@ -21,7 +23,7 @@ const Search = ({ setMovies }) => {
       const result = res.data.results;
       const filteredMovies = input
         ? result.filter((m) =>
-            m.title.toLowerCase().includes(input.toLowerCase)
+            m.title.toLowerCase().includes(input.toLowerCase())
           )
         : result;
       setMovies(filteredMovies);
@@ -47,13 +49,22 @@ const Search = ({ setMovies }) => {
         >
           Search
         </button>
+        {error && (
+          <div className="fixed inset-0  bg-black/70 flex items-center justify-center px-4 backdrop-blur-sm">
+            <div className="w-full max-w-sm bg-black p-6 rounded shadow-md text-center">
+              <p className="text-red-700 mb-4 font-semibold">
+                Please try again with a valid title
+              </p>
+              <button
+                onClick={() => setError(false)}
+                className="mt-2 px-2 py-1 bg-red-600 text-white rounded-sm text-[10px]"
+              >
+                close
+              </button>
+            </div>
+          </div>
+        )}
       </div>
-
-      {error && (
-        <p className="text-red-600 text-sm mt-2">
-          Please try again with a valid title
-        </p>
-      )}
     </div>
   );
 };
