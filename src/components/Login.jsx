@@ -19,20 +19,25 @@ const Login = () => {
   }
 
   const register = async (email, password, name) => {
-    const userCredentials = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredentials.user;
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredentials.user;
 
-    await setDoc(doc(db, "users", user.uid), {
-      uid: user.uid,
-      email: user.email,
-      name: name,
-    });
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        email: user.email,
+        name: name,
+      });
 
-    console.log("User created and saved:", user);
+      console.log("User created and saved:", user);
+    } catch (error) {
+      console.log("error with", error);
+      setError(error.message);
+    }
   };
 
   {
@@ -40,12 +45,17 @@ const Login = () => {
   }
 
   const userLogin = async (email, password) => {
-    const userCredentials = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    console.log("User logged in:", userCredentials.user);
+    try {
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("User logged in:", userCredentials.user);
+    } catch (err) {
+      console.error("Login error:", err);
+      setError(err.message);
+    }
   };
 
   {
@@ -102,7 +112,6 @@ const Login = () => {
             type="password"
             placeholder="Password"
           />
-
           {!isLogin && (
             <input
               className="outline-1 outline-blue-800 rounded-sm p-1"
