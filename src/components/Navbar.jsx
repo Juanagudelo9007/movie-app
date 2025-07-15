@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" fixed top-0 w-full p-2 shadow-[0_4px_10px_rgba(0,0,0,0.25)] bg-white/10 backdrop-blur-sm">
+    <nav className=" w-full p-2 shadow-[0_4px_10px_rgba(0,0,0,0.25)] bg-white/10 backdrop-blur-sm">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div>Logo</div>

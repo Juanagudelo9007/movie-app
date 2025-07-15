@@ -1,16 +1,55 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import img from "../assets/hero-bg.png"
+import React, { useState } from "react";
+import axios from "axios";
 
+const Search = ({ setMovies }) => {
+  const [input, setInput] = useState("");
+  const [error, setError] = useState(false);
+  const key = "1d3172c68f14f66b46202879691d8367";
 
-function Home({userName}) {
+  const fetchingMovies = async () => {
+    if (!input.trim() || !isNaN(Number(input))) {
+      setMovies([]);
+      setError(true);
+      return;
+    }
+
+    try {
+      setError(false);
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?query=${input}&api_key=${key}`
+      );
+      setMovies(res.data.results); 
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    }
+  };
+
   return (
-    <div className='relative h-screen w-full'>
-        <img src={img}  className='absolute inset-0 w-full h-full object-cover'/>
-          <h1 className='text-5xl text-white'>{userName}</h1>
-        <Navbar />
-    </div>
-  )
-}
+    <div className="h-[60vh] w-full flex justify-center items-center px-4">
+      <div className="flex justify-center gap-5 w-full max-w-md">
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          type="text"
+          placeholder="Movies..."
+          className="flex-grow p-2 border rounded"
+        />
+        <button
+          onClick={fetchingMovies}
+          className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Search
+        </button>
+      </div>
 
-export default Home
+      {error && (
+        <p className="text-red-600 text-sm mt-2">
+          Please try again with a valid title
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default Search;
