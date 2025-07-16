@@ -82,14 +82,14 @@ const Search = ({ setMovies }) => {
           Search
         </button>
         {error && (
-          <div className="fixed inset-0  bg-black/70 flex items-center justify-center px-4 backdrop-blur-sm">
-            <div className="w-full max-w-sm bg-black p-6 rounded shadow-md text-center">
+          <div className="fixed inset-0  bg-black/30 flex items-center justify-center px-4 backdrop-blur-sm">
+            <div className="w-full max-w-sm bg-black/50 p-6 rounded shadow-md text-center">
               <p className="text-red-700 mb-4 font-semibold">
                 Please try again with a valid title
               </p>
               <button
                 onClick={() => setError(false)}
-                className="mt-2 px-2 py-1 bg-red-600 text-white rounded-sm text-[10px]"
+                className="mt-2 px-2 py-1 bg-red-600 text-white rounded-sm text-[10px] cursor-pointer"
               >
                 close
               </button>
