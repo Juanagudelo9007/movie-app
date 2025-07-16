@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
 import app from "../firebase/firebase";
-import { getAuth,signOut } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 
 const auth = getAuth(app);
 
-const closeS = ()=>{
-   signOut(auth)
-}
+const closeS = () => {
+  signOut(auth);
+};
 
 const links = [
   { id: 1, title: "Home", link: "#home" },
@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" w-full p-2 shadow-[0_4px_10px_rgba(0,0,0,0.25)] bg-white/10 backdrop-blur-sm font-montserrat">
+    <nav className=" w-full p-2 shadow-[0_0_8px_rgba(255,255,255,0.6)] bg-white/10 backdrop-blur-sm font-montserrat">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div>Logo</div>

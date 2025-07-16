@@ -73,11 +73,11 @@ const Search = ({ setMovies }) => {
           onChange={(e) => setInput(e.target.value)}
           type="text"
           placeholder="Movies..."
-          className="flex-grow p-2 border rounded"
+          className="flex-grow p-1 border-b-1 rounded-sm outline-0"
         />
         <button
           onClick={fetchingMovies}
-          className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="px-4  bg-transparent text-white rounded text-sm cursor-pointer"
         >
           Search
         </button>
