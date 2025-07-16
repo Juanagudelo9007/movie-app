@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { GoHeart } from "react-icons/go";
+import { FcLike } from "react-icons/fc";
 
 function Card({ movie }) {
+  const [like, setLike] = useState(false)
   return (
-    <div className="relative w-[250px]  bg-slate-900 text-white rounded-sm text-center overflow-hidden group">
-      <button className="absolute top-1 right-2 z-20 cursor-pointer">like</button>
+    <div className="relative w-[250px] h-[310px] bg-slate-900 text-white rounded-sm text-center overflow-hidden group ">
+      <button
+        className="absolute top-1 right-2 z-20 cursor-pointer"
+        onClick={() => setLike(!like)}
+      >
+        {like ? <FcLike /> : <GoHeart />}
+      </button>
       <img
-        className="w-full h-[200px] object-cover"
+        className="w-full h-full object-cover"
         src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
         alt={movie.title}
       />
@@ -15,10 +23,14 @@ function Card({ movie }) {
         <p className="text-xs text-slate-400 line-clamp-4 mt-4 text-justify">
           {movie.overview}
         </p>
-      </div>
-      <div className=" flex justify-between p-2 mt-2 text-slate-400 ">
-        <span>{movie.original_language}</span>
-        <span>{movie.release_date}</span>
+
+        {/* I need to fix this, this is my limit now */}
+        <div className="absolute bottom-0 left-0 flex p-2 text-slate-400 uppercase ">
+          <span>{movie.original_language}</span>
+        </div>
+        <div className="absolute bottom-0 right-0 flex p-2 text-slate-400  ">
+          <span>{movie.release_date}</span>
+        </div>
       </div>
     </div>
   );
