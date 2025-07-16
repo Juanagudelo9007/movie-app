@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Search = ({ setMovies }) => {
@@ -45,6 +45,25 @@ const Search = ({ setMovies }) => {
       setError(true);
     }
   };
+
+  {
+    /* Default movies */
+  }
+
+  useEffect(() => {
+    const defaultMovies = async () => {
+      try {
+        const res = await axios.get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${key}`
+        );
+        setMovies(res.data.results);
+      } catch (error) {
+        setError(error);
+        console.log("error while searching", error);
+      }
+    };
+    defaultMovies();
+  }, []);
 
   return (
     <div className="h-[60vh] w-full flex justify-center items-center px-4">
