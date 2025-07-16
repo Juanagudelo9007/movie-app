@@ -3,11 +3,11 @@ import { GoHeart } from "react-icons/go";
 import { FcLike } from "react-icons/fc";
 
 function Card({ movie }) {
-  const [like, setLike] = useState(false)
+  const [like, setLike] = useState(false);
   return (
-    <div className="relative w-[250px] h-[310px] bg-slate-900 text-white rounded-sm text-center overflow-hidden group ">
+    <div className="relative w-[250px] h-[290px] bg-slate-900 text-white rounded-sm text-center overflow-hidden group font-montserrat shadow-[0_0_12px_rgba(255,255,255,0.6)]">
       <button
-        className="absolute top-1 right-2 z-20 cursor-pointer"
+        className="absolute top-1 right-2 z-20 cursor-pointer text-xl"
         onClick={() => setLike(!like)}
       >
         {like ? <FcLike /> : <GoHeart />}
@@ -19,8 +19,8 @@ function Card({ movie }) {
       />
       {/*Overlay*/}
       <div className="p-2 absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col place-content-center transition-all duration-500 bg-black/70 backdrop-blur-sm cursor-pointer">
-        <h3 className="text-xl font-bold truncate">{movie.title}</h3>
-        <p className="text-xs text-slate-400 line-clamp-4 mt-4 text-justify">
+        <h3 className="text-lg font-bold truncate">{movie.title}</h3>
+        <p className="text-xs text-slate-300 line-clamp-4 mt-4 text-justify">
           {movie.overview}
         </p>
 

@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" w-full p-2 shadow-[0_4px_10px_rgba(0,0,0,0.25)] bg-white/10 backdrop-blur-sm">
+    <nav className=" w-full p-2 shadow-[0_4px_10px_rgba(0,0,0,0.25)] bg-white/10 backdrop-blur-sm font-montserrat">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div>Logo</div>
@@ -41,8 +41,9 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <button className="bg-slate-500 text-white text-[10px] px-2 py-1 rounded-sm hidden md:block"
-        onClick={closeS}
+        <button
+          className="bg-slate-500 text-white text-[10px] px-2 py-1 rounded-sm hidden md:block"
+          onClick={closeS}
         >
           log in
         </button>
@@ -69,8 +70,9 @@ const Navbar = () => {
                 >
                   <IoCloseSharp />
                 </button>
-                <button className="bg-slate-400 rounded-sm text-[12px] cursor-pointer"
-                onClick={closeS}
+                <button
+                  className="bg-slate-400 rounded-sm text-[12px] cursor-pointer"
+                  onClick={closeS}
                 >
                   log in
                 </button>
