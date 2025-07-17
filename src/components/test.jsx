@@ -1,56 +1,61 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-
-const hola = () => {
-  const [input, setInput] = useState("");
-  const [result, setResult] = useState([]);
-
-  const key = "1d3172c68f14f66b46202879691d8367";
-
-  const fetchingMovies = async () => {
-    try {
-      const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${key}`
-      );
-      const movies = res.data.results;
-      const filteredMovies = input
-        ? movies.filter((movie) =>
-            movie.title.toLowerCase().includes(input.toLowerCase())
-          )
-        : movies;
-      setResult(filteredMovies);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchingMovies();
-  }, [input]);
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <div>
-        {result.map((movie) => (
-          <div key={movie.id}>
-            <h3>{movie.title}</h3>
-            <img
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-              alt={movie.title}
+    <div className="min-h-screen flex items-center justify-center bg-black/90 backdrop-blur-sm text-white">
+      <div className="w-full bg-black/80 max-w-md p-16 rounded-md">
+        <h1 className="text-2xl mb-5 text-center font-bold">
+          {isLogin ? "Sign in" : "Sign up"}
+        </h1>
+        <form className="flex flex-col gap-6" onSubmit={handlerSubmit}>
+          {!isLogin && (
+            <input
+              className="outline-1 outline-blue-800 rounded-sm p-1"
+              name="name"
+              id="name"
+              type="text"
+              placeholder="Name"
             />
-            <h2>{movie.release_date}</h2>
-            <p>{movie.overview}</p>
-          </div>
-        ))}
+          )}
+          <input
+            className="outline-1 outline-blue-800 rounded-sm p-1"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+          />
+          <input
+            className="outline-1 outline-blue-800 rounded-sm p-1"
+            name="password"
+            id="password"
+            type="password"
+            placeholder="Password"
+          />
+          {!isLogin && (
+            <input
+              className="outline-1 outline-blue-800 rounded-sm p-1"
+              name="confirmPassword"
+              id="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+            />
+          )}
+          <button className="bg-gradient-to-r from-sky-700 to-blue-800 px-2 py-1 rounded-sm cursor-pointer">
+            {isLogin ? "Log in" : "Sign up"}
+          </button>
+          <p
+            className="text-center cursor-pointer"
+            onClick={() => setIsLogin(!isLogin)}
+          >
+            {isLogin ? "Don't have an account?" : "Already have an account?"}
+          </p>
+          {error && (
+            <div className="bg-red-500 text-white text-center p-2 rounded mb-4">
+              {error}
+            </div>
+          )}
+        </form>
       </div>
     </div>
   );
 };
 
-export default hola;
+

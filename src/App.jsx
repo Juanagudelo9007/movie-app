@@ -1,15 +1,13 @@
-
-
-import AppRouter from "./Routes/AppRouter";
 import Home from "./pages/Home";
+import Login from "./components/Login";
 
 const App = () => {
- 
-  return <div>
-     <Home />
-      <AppRouter />
-   
-     </div>;
+  return (
+    <div>
+       <Login />
+  
+    </div>
+  );
 };
 
 export default App;

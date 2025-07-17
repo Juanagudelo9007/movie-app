@@ -1,59 +1,43 @@
+import React from "react";
 
 const Login = () => {
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black/90 backdrop-blur-sm text-white">
-      <div className="w-full bg-black/80 max-w-md p-16 rounded-md">
-        <h1 className="text-2xl mb-5 text-center font-bold">
-          {isLogin ? "Sign in" : "Sign up"}
-        </h1>
-        <form className="flex flex-col gap-6" onSubmit={handlerSubmit}>
-          {!isLogin && (
-            <input
-              className="outline-1 outline-blue-800 rounded-sm p-1"
-              name="name"
-              id="name"
-              type="text"
-              placeholder="Name"
-            />
-          )}
+    <div className="min-h-screen flex justify-center items-center bg-black/40  ">
+      <div className=" w-[350px] max-w[200px] bg-black/80   p-12 flex flex-col justify-center items-center gap-6 rounded-lg">
+        <h1 className="text-2xl ">Login</h1>
+        <form action="" className="flex flex-col gap-3 ">
           <input
-            className="outline-1 outline-blue-800 rounded-sm p-1"
-            id="email"
-            name="email"
+            className="outline-0 border-0 border-b border-white bg-transparent "
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name"
+          />
+          <input
+            className="outline-0 border-0 border-b border-white bg-transparent "
             type="email"
+            name="email"
+            id="email"
             placeholder="Email"
           />
           <input
-            className="outline-1 outline-blue-800 rounded-sm p-1"
+            className="outline-0 border-0 border-b border-white bg-transparent "
+            type="password"
             name="password"
             id="password"
-            type="password"
             placeholder="Password"
           />
-          {!isLogin && (
-            <input
-              className="outline-1 outline-blue-800 rounded-sm p-1"
-              name="confirmPassword"
-              id="confirmPassword"
-              type="password"
-              placeholder="Confirm Password"
-            />
-          )}
-          <button className="bg-gradient-to-r from-sky-700 to-blue-800 px-2 py-1 rounded-sm cursor-pointer">
-            {isLogin ? "Log in" : "Sign up"}
-          </button>
-          <p
-            className="text-center cursor-pointer"
-            onClick={() => setIsLogin(!isLogin)}
-          >
-            {isLogin ? "Don't have an account?" : "Already have an account?"}
-          </p>
-          {error && (
-            <div className="bg-red-500 text-white text-center p-2 rounded mb-4">
-              {error}
-            </div>
-          )}
+          <input
+            className="outline-0 border-0 border-b border-white bg-transparent "
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            placeholder="ConfirmPassword"
+          />
+          <button>Login</button>
+          <a className="underline s" href="">
+            Dont have an account?{" "}
+          </a>
         </form>
       </div>
     </div>
