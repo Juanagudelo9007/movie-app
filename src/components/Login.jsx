@@ -95,7 +95,7 @@ const Login = () => {
       )}
 
       {/* Login form */}
-      <div className="w-[250px] sm:w-[300px] bg-black/70 backdrop-blur-md  p-6 flex flex-col justify-center items-center gap-6 rounded-lg">
+      <div className="w-[300px] sm:w-[350px] bg-black/70 backdrop-blur-md  p-6 flex flex-col justify-center items-center gap-6 rounded-lg">
         <h1 className="text-2xl ">{!islogged ? "Login" : "Sign up"}</h1>
         <form
           onSubmit={handlerSubmit}

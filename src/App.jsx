@@ -5,7 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 const App = () => {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const auth = getAuth(app);
@@ -20,7 +20,9 @@ const App = () => {
     return () => unsubscribe();
   }, []);
 
-  return <div>{user ? <Home /> : <Login />}</div>;
+  return <div>{user ? <Home 
+  
+  user={user}/> : <Login />}</div>;
 };
 
 export default App;

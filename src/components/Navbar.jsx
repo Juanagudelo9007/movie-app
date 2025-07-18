@@ -11,6 +11,11 @@ const links = [
     title: "Favorites",
     link: "#favorite",
   },
+  {
+    id: 3,
+    title: "Profile",
+    link: "#Profile",
+  },
 ];
 
 const Navbar = () => {
@@ -49,7 +54,13 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <button className="bg-slate-500 text-white text-[10px] px-2 py-1 rounded-sm hidden md:block">
+        <button
+          className="bg-slate-500 text-white text-[10px] px-2 py-1 rounded-sm hidden md:block cursor-pointer"
+          onClick={() => {
+            console.log("clickeado");
+            closeSesion();
+          }}
+        >
           Log out
         </button>
         <button onClick={openMenu} className="md:hidden">
@@ -61,9 +72,9 @@ const Navbar = () => {
         </button>
         {/* Mobile Menu Overlay*/}
         {isOpen && (
-          <div className="md:hidden w-[200px] fixed top-2 right-0 bg-black/65 backdrop-blur-sm text-white rounded-l-sm p-2 h-[150px] z-10">
+          <div className="md:hidden w-[200px] fixed top-2 right-0 bg-black/90 backdrop-blur-lg text-white rounded-l-sm p-2 h-[150px] z-10">
             <div className="flex">
-              <ul className="flex flex-col gap-3 mt-2 ml-3">
+              <ul className="flex flex-col gap-3  ml-3">
                 {links.map((l) => (
                   <li key={l.id}>
                     <a href="">{l.title}</a>
