@@ -25,7 +25,7 @@ const Login = () => {
     const name = e.target.name ? e.target.name.value : "";
     const confirmPassword = e.target.confirmPassword?.value || "";
 
-    console.log(name, password, email);
+    console.log(name, email, password);
 
     {
       /* Password error */
@@ -81,6 +81,7 @@ const Login = () => {
 
   return (
     <div className="relative min-h-screen bg-cover bg-center flex justify-center items-center bg-[url('bg.jpg')]">
+      {/* Error message */}
       {error && (
         <div className="absolute z-30  bg-black/40 backdrop-blur-xl w-[250px] h-[120px] flex  flex-col gap-3 justify-center items-center rounded-sm">
           <p className="text-white text-xs">{error}</p>
@@ -92,7 +93,9 @@ const Login = () => {
           </button>
         </div>
       )}
-      <div className="w-[250px] sm:w-[300px] bg-black/80 backdrop-blur-sm   p-6 flex flex-col justify-center items-center gap-6 rounded-lg">
+
+      {/* Login form */}
+      <div className="w-[250px] sm:w-[300px] bg-black/70 backdrop-blur-md  p-6 flex flex-col justify-center items-center gap-6 rounded-lg">
         <h1 className="text-2xl ">{!islogged ? "Login" : "Sign up"}</h1>
         <form
           onSubmit={handlerSubmit}
