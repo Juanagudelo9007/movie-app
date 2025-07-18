@@ -1,15 +1,13 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAJ_XShorcz0Xmnqz3nSk-e3v3rHCEcPNA",
-  authDomain: "movie-search-fa620.firebaseapp.com",
-  projectId: "movie-search-fa620",
-  storageBucket: "movie-search-fa620.firebasestorage.app",
-  messagingSenderId: "237513947149",
-  appId: "1:237513947149:web:1ad9bdc4d24ee7109abd44",
-  measurementId: "G-GNW68EZW1K",
+  apiKey: "AIzaSyAJmo5yoLus3F7BJN1pWVlof7MznIqQIAw",
+  authDomain: "movie-player-631ca.firebaseapp.com",
+  projectId: "movie-player-631ca",
+  storageBucket: "movie-player-631ca.firebasestorage.app",
+  messagingSenderId: "50481535089",
+  appId: "1:50481535089:web:f7d487953d7b211be8a3d0",
+  measurementId: "G-7JYQ2CXYYM",
 };
 
-const app = initializeApp(firebaseConfig);
-
-export default app;
+export const app = initializeApp(firebaseConfig);

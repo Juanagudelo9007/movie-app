@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
-import app from "../firebase/firebase";
-import { getAuth, signOut } from "firebase/auth";
 
-const auth = getAuth(app);
 
-const closeS = () => {
-  signOut(auth);
-};
 
 const links = [
   { id: 1, title: "Home", link: "#home" },
@@ -41,10 +35,7 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <button
-          className="bg-slate-500 text-white text-[10px] px-2 py-1 rounded-sm hidden md:block"
-          onClick={closeS}
-        >
+        <button className="bg-slate-500 text-white text-[10px] px-2 py-1 rounded-sm hidden md:block">
           log in
         </button>
         <button onClick={openMenu} className="md:hidden">
@@ -70,10 +61,7 @@ const Navbar = () => {
                 >
                   <IoCloseSharp />
                 </button>
-                <button
-                  className="bg-slate-400 rounded-sm text-[12px] cursor-pointer"
-                  onClick={closeS}
-                >
+                <button className="bg-slate-400 rounded-sm text-[12px] cursor-pointer">
                   log in
                 </button>
               </ul>
