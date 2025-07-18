@@ -17,7 +17,8 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const name = e.target.name.value;
+    const name = e.target.name ? e.target.name.value : "";
+
     console.log(name, password, email);
     try {
       if (register) {
@@ -29,7 +30,12 @@ const Login = () => {
         await updateProfile(credentials.user, { displayName: name });
         console.log("user created with", credentials.user.displayName);
       } else {
-        await signInWithEmailAndPassword(auth, email, password);
+        const userSignIn = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        console.log("user logged in:", userSignIn);
       }
     } catch (error) {
       console.log(error);
@@ -37,8 +43,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-black/10  backdrop-blur-xl ">
-      <div className="w-[300px] sm:w-[350px] bg-black/40   p-12 flex flex-col justify-center items-center gap-6 rounded-lg">
+    <div className="min-h-screen bg-cover bg-center flex justify-center items-center bg-[url('bg.jpg')]">
+      <div className="w-[300px] sm:w-[350px] bg-black/80 backdrop-blur-sm   p-12 flex flex-col justify-center items-center gap-6 rounded-lg">
         <h1 className="text-2xl ">{!islogged ? "Login" : "Sign up"}</h1>
         <form
           onSubmit={handlerSubmit}
