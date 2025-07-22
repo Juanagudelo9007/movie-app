@@ -1,5 +1,4 @@
-import { LoginContext } from "../Context/AuthContext";
-import { useContext } from "react";
+import { useAuthForm } from "../hooks/useAuthForm";
 
 const Login = () => {
   const {
@@ -10,7 +9,7 @@ const Login = () => {
     handlerSubmit,
     setIslogged,
     setRegister,
-  } = useContext(LoginContext);
+  } = useAuthForm();
 
   return (
     <div className="relative min-h-screen bg-cover bg-center flex justify-center items-center bg-[url('bg.jpg')]">
