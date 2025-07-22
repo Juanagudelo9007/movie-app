@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
-import { signOut, getAuth } from "firebase/auth";
-import { app } from "../firebase/firebase";
+import { useSesion } from "../hooks/useSesion";
 
 const links = [
   { id: 1, title: "Home", link: "#home" },
@@ -19,25 +17,7 @@ const links = [
 ];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  {
-    /* Log Out */
-  }
-
-  const closeSesion = async () => {
-    const auth = getAuth(app);
-    try {
-      await signOut(auth);
-      console.log("Sesión cerrada");
-    } catch (error) {
-      console.error("Error cerrando sesión:", error);
-    }
-  };
+  const { openMenu, isOpen, setIsOpen, closeSesion } = useSesion();
 
   return (
     <nav className=" w-full p-2 shadow-[0_0_8px_rgba(255,255,255,0.6)] bg-white/10 backdrop-blur-sm font-montserrat">
