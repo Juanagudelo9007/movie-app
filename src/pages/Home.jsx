@@ -10,7 +10,7 @@ function Home({ user }) {
   useEffect(() => {
     const showMesssage = setTimeout(() => {
       setWelcomeMessage(false);
-    }, 7000);
+    }, 6000);
     return () => clearTimeout(showMesssage);
   }, []);
 
