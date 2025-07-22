@@ -1,5 +1,5 @@
 import React from "react";
-import { createContext, useState } from "react";
+import { useState } from "react";
 import { app } from "../firebase/firebase";
 import {
   getAuth,
@@ -8,9 +8,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-export const LoginContext = createContext();
-
-const AuthContext = ({ children }) => {
+export const useAuthForm = () => {
   const [islogged, setIslogged] = useState(false);
   const [register, setRegister] = useState(false);
   const [error, setError] = useState("");
@@ -81,22 +79,14 @@ const AuthContext = ({ children }) => {
     }
   };
 
-  return (
-    <LoginContext.Provider
-      value={{
-        islogged,
-        setIslogged,
-        register,
-        setRegister,
-        error,
-        setError,
-        handlerSubmit,
-        errorMessageFirebase,
-      }}
-    >
-      {children}
-    </LoginContext.Provider>
-  );
+  return {
+    setError,
+    error,
+    setRegister,
+    register,
+    handlerSubmit,
+    errorMessageFirebase,
+    islogged,
+    setIslogged,
+  };
 };
-
-export default AuthContext;
