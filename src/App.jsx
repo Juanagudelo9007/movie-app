@@ -1,4 +1,5 @@
-import Home from "./pages/Home";
+
+import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import { app } from "./firebase/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -24,7 +25,7 @@ const App = () => {
     return () => unsubscribe();
   }, []);
 
-  return <div>{user ? <Home user={user} /> : <Login />}</div>;
+  return <div>{user ? <HomePage user={user} /> : <Login />}</div>;
 };
 
 export default App;
