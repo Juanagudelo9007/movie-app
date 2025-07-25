@@ -1,10 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Home from "../pages/Home";
 import Navbar from "./Navbar";
+import { Outlet } from "react-router-dom";
+import {LoginContext} from '../Context/UserLogin'
+import { useContext } from "react"
 
-const HomePage = ({ user }) => {
+
+
+
+const HomePage = () => {
   const [welcomeMessage, setWelcomeMessage] = useState(true);
+
+const {user} = useContext(LoginContext)
 
   useEffect(() => {
     const showMesssage = setTimeout(() => {
@@ -26,7 +33,7 @@ const HomePage = ({ user }) => {
           </div>
         </div>
       )}
-      <Home />
+      <Outlet />
     </div>
   );
 };

@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import UserLogin from "./Context/UserLogin.jsx";
+import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <UserLogin>
-      <App />
-    </UserLogin>
+    <BrowserRouter>
+      <UserLogin>
+        <App />
+      </UserLogin>
+    </BrowserRouter>
   </StrictMode>
 );

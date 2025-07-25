@@ -1,18 +1,19 @@
 import { CiMenuBurger } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
 import { useSesion } from "../hooks/useSesion";
+import { Link } from "react-router-dom";
 
 const links = [
-  { id: 1, title: "Home", link: "#home" },
+  { id: 1, title: "Home", link: "/home" },
   {
     id: 2,
     title: "Favorites",
-    link: "#favorite",
+    link: "/favorites",
   },
   {
     id: 3,
     title: "Profile",
-    link: "#Profile",
+    link: "/Profile",
   },
 ];
 
@@ -29,7 +30,7 @@ const Navbar = () => {
           <ul className="flex gap-8">
             {links.map((l) => (
               <li key={l.id}>
-                <a href="">{l.title}</a>
+                <Link to={l.link}>{l.title}</Link>
               </li>
             ))}
           </ul>
@@ -57,7 +58,7 @@ const Navbar = () => {
               <ul className="flex flex-col gap-3  ml-3">
                 {links.map((l) => (
                   <li key={l.id}>
-                    <a href="">{l.title}</a>
+                    <Link to={l.link} >{l.title}</Link>
                   </li>
                 ))}
                 <button

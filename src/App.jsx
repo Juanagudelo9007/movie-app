@@ -5,6 +5,7 @@ import { useContext } from "react";
 import {  useEffect } from "react";
 import { app } from "./firebase/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import PrivateRoutes from "./routes/PrivateRoutes";
 
 const App = () => {
   const { user,setUser } = useContext(LoginContext);
@@ -22,7 +23,7 @@ const App = () => {
     }, []);
   
 
-  return <div>{user ? <HomePage user={user} /> : <Login />}</div>;
+  return <div>{user ? <PrivateRoutes /> : <Login />}</div>;
 };
 
 export default App;
