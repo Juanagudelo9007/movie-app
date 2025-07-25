@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App.jsx";
 import UserLogin from "./Context/UserLogin.jsx";
 import { BrowserRouter } from "react-router-dom";
+import FavoriteMovies from "./Context/FavoriteMovies.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <UserLogin>
-        <App />
+        <FavoriteMovies>
+          <App />
+        </FavoriteMovies>
       </UserLogin>
     </BrowserRouter>
   </StrictMode>

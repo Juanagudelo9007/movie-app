@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { GoHeart } from "react-icons/go";
 import { FcLike } from "react-icons/fc";
+import {LikedMovies} from "../Context/FavoriteMovies";
+
+
+
 
 function Card({ movie }) {
-  const [like, setLike] = useState(false);
+const { favorites, toggleFav,  } =
+  useContext(LikedMovies);
+
+  const fav = favorites.some(f => f.id === movie.id)
+
   return (
-    <div className="relative w-[250px] h-[290px] bg-slate-900 text-white rounded-sm text-center overflow-hidden group font-montserrat shadow-[0_0_12px_rgba(255,255,255,0.6)]">
+    <div className="relative w-[200px] aspect-[2/3] bg-slate-900 text-white rounded-sm text-center overflow-hidden group font-montserrat shadow-[0_0_12px_rgba(255,255,255,0.6)]">
       <button
         className="absolute top-1 right-2 z-20 cursor-pointer text-xl"
-        onClick={() => setLike(!like)}
+        onClick={() => toggleFav(movie)}
       >
-        {like ? <FcLike /> : <GoHeart />}
+        {fav ? <FcLike /> : <GoHeart />}
       </button>
       <img
-        className="w-full h-full object-cover"
+        className=" w-full aspect-[2/3]"
         src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
         alt={movie.title}
       />
