@@ -5,8 +5,6 @@ import Card from "../components/Card";
 function Home() {
   const [movies, setMovies] = useState([]);
 
-
-
   return (
     <div className="min-h-screen bg-no-repeat  bg-fixed bg-cover bg-center bg-[url('hero-bg.png')]">
       <Search setMovies={setMovies} />
