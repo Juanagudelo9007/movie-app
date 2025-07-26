@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import { createContext, useState } from "react";
-import { GoHeart } from "react-icons/go";
-import { FcLike } from "react-icons/fc";
+import React, { useEffect, useState } from "react";
+import { createContext } from "react";
 import { useAuthForm } from "../hooks/useAuthForm";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
@@ -10,11 +8,8 @@ export const LikedMovies = createContext();
 
 const FavoriteMovies = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const { userId } = useAuthForm();
-
-  {
-    /* db firebase */
-  }
 
   useEffect(() => {
     if (!userId) return;
@@ -27,24 +22,20 @@ const FavoriteMovies = ({ children }) => {
       } else {
         setFavorites([]);
       }
+      setIsLoaded(true);
     };
     fetchMovies();
   }, [userId]);
 
-  {
-    /* save favorites  */
-  }
-  
-  console.log('user id ', userId);
-
-
+  console.log("user id ", userId);
 
   useEffect(() => {
-    if (!userId || favorites.length === 0) return;
-    console.log('saving favorites', favorites);
+    if (!userId) return;
+    if (!isLoaded) return;
+
+    console.log("saving favorites", favorites);
     const saveMovies = async () => {
       try {
-          
         await setDoc(doc(db, "favorites", userId), {
           movies: favorites,
         });
@@ -53,7 +44,7 @@ const FavoriteMovies = ({ children }) => {
       }
     };
     saveMovies();
-  }, [favorites, userId] );
+  }, [favorites, userId, isLoaded]);
 
   const addFavorites = (movie) => {
     if (!favorites.find((item) => item.id === movie.id)) {
@@ -65,12 +56,7 @@ const FavoriteMovies = ({ children }) => {
     setFavorites(favorites.filter((item) => item.id !== id));
   };
 
-  {
-    /* Toggle function to add and remove movies */
-  }
-
   const toggleFav = (movie) => {
-    
     setFavorites((prev) => {
       const isFav = prev.some((f) => f.id === movie.id);
       if (isFav) {
