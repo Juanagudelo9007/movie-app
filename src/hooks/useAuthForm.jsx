@@ -1,18 +1,38 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { app } from "../firebase/firebase";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 export const useAuthForm = () => {
   const [islogged, setIslogged] = useState(false);
   const [register, setRegister] = useState(false);
   const [error, setError] = useState("");
+  const [userId, setUserId] = useState(null);
   const auth = getAuth(app);
+
+  {
+    /* Listener to detect if a user is logged in */
+  }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserId(user.uid);
+        setIslogged(true);
+      } else {
+        setUserId(null);
+        setIslogged(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [auth]);
 
   {
     /* Handler submit */
@@ -43,14 +63,18 @@ export const useAuthForm = () => {
           email,
           password
         );
+
         await updateProfile(credentials.user, { displayName: name });
+        setUserId(credentials.user.uid);
         console.log("user created with", credentials.user.displayName);
+        console.log("user id is", credentials.user.uid);
       } else {
         const userSignIn = await signInWithEmailAndPassword(
           auth,
           email,
           password
         );
+        setUserId(userSignIn.user.uid);
         console.log("user logged in:", userSignIn);
       }
     } catch (error) {
@@ -88,5 +112,7 @@ export const useAuthForm = () => {
     errorMessageFirebase,
     islogged,
     setIslogged,
+    setUserId,
+    userId,
   };
 };

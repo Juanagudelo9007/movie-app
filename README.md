@@ -55,6 +55,13 @@ Manages session state and logout functionality, including toggling the mobile/us
 
 This approach provides a clear architecture, facilitates global user state handling, and keeps routes organized without conflicts.
 
+## User Authentication and Favorites Persistence
+
+- Uses Firebase's `onAuthStateChanged` listener to detect if a user is logged in.
+- Stores the user ID and login status in state.
+- Fetches and saves the user's favorite movies in Firestore for data persistence.
+- Provides context to manage favorite movies throughout the app.
+
 ## Notes
 
 During refactoring:

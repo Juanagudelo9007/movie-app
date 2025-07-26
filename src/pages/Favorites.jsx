@@ -7,12 +7,14 @@ const Favorites = () => {
   const { favorites } = useContext(LikedMovies);
 
   return (
-    <div className=" p-6">
-      <h1 className="text-center mt-10">Your Favorite Movies</h1>
-      <div className=" grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4 gap-6  mt-16">
-        {favorites.map((movie) => (
-          <Card key={movie.id} movie={movie} />
-        ))}
+    <div className="flex justify-center flex-col">
+      <h1 className="text-center m-8">Your Favorite Movies</h1>
+      <div className="flex justify-center mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {favorites.map((movie) => (
+            <Card key={movie.id} movie={movie} />
+          ))}
+        </div>
       </div>
     </div>
   );

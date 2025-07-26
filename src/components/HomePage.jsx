@@ -25,8 +25,8 @@ const {user} = useContext(LoginContext)
     <div className="min-h-screen bg-no-repeat  bg-fixed bg-cover bg-center bg-[url('hero-bg.png')]">
       <Navbar />
       {user?.displayName && welcomeMessage && (
-        <div className="inset-0 flex justify-center items-baseline-last bg-transparent">
-          <div className=" w-[250px] h-[100px] bg-transparent flex justify-center items-center rounded-md">
+        <div className="flex justify-center  bg-transparent">
+          <div className=" w-[250px] h-[50px] bg-transparent flex justify-center items-center ">
             <p className="text-white text-md sm:text-2xl font-bold">
               Welcome {user?.displayName}
             </p>
