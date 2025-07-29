@@ -1,13 +1,13 @@
-import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
-export const useSearch = () => {
+export const useSearch = (setMovies) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
+
   const key = "1d3172c68f14f66b46202879691d8367";
 
-  const fetchingMovies = async (setMovies) => {
+  const fetchingMovies = async () => {
     {
       /*Error if type numbers or empty */
     }

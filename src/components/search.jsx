@@ -5,6 +5,7 @@ import axios from "axios";
 const Search = ({ setMovies }) => {
   const { input, setInput, error, setError, fetchingMovies } =
     useSearch(setMovies);
+
   const key = "1d3172c68f14f66b46202879691d8367";
 
   {
@@ -26,6 +27,8 @@ const Search = ({ setMovies }) => {
     defaultMovies();
   }, []);
 
+ console.log(input);
+
   return (
     <div className="h-[60vh] w-full flex justify-center items-center px-4">
       <div className="flex justify-center gap-5 w-full max-w-md">
@@ -37,7 +40,7 @@ const Search = ({ setMovies }) => {
           className="flex-grow p-1 border-b-1 rounded-sm outline-0"
         />
         <button
-          onClick={() => fetchingMovies(setMovies)}
+          onClick={() => fetchingMovies(debounceInput)}
           className="px-4  bg-transparent text-white rounded text-sm cursor-pointer"
         >
           Search
