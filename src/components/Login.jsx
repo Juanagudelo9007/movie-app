@@ -1,4 +1,5 @@
 import { useAuthForm } from "../hooks/useAuthForm";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const {
@@ -17,12 +18,25 @@ const Login = () => {
       {error && (
         <div className="absolute z-30  bg-black/40 backdrop-blur-xl w-[250px] h-[120px] flex  flex-col gap-3 justify-center items-center rounded-sm">
           <p className="text-white text-xs">{error}</p>
-          <button
+          <motion.button
             onClick={() => setError("")}
             className="text-xs text-white  bg-red-600 px-2  rounded-sm cursor-pointer"
+            whileHover={{
+              backgroundColor: "#9C1E07",
+            }}
+            whileTap={{
+              scale: 0.75,
+            }}
+            transition={{
+              duration: 0.33,
+              ease: "easeOut",
+              type: "spring",
+              stiffness: 300,
+              damping: 20,
+            }}
           >
             ok
-          </button>
+          </motion.button>
         </div>
       )}
 
@@ -66,12 +80,25 @@ const Login = () => {
               placeholder="Confirm Password"
             />
           )}
-          <button
+          <motion.button
             className="font-bold px-4 -py2 bg-red-500 rounded-sm cursor-pointer"
             type="submit"
+            whileHover={{
+              backgroundColor: "#9C1E07",
+            }}
+            whileTap={{
+              scale: 0.75,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              type: "spring",
+              stiffness: 300,
+              damping: 20,
+            }}
           >
             {!islogged ? "Login" : "Sign up "}
-          </button>
+          </motion.button>
           <button
             className="underline cursor-pointer"
             type="button"

@@ -2,8 +2,8 @@ import React from "react";
 import Card from "../components/Card";
 import { useContext } from "react";
 import { LikedMovies } from "../Context/FavoriteMovies";
-import { FaFaceSadCry } from "react-icons/fa6";
-import { ImHappy2 } from "react-icons/im";
+import { PiEmptyBold } from "react-icons/pi";
+import { FaStar } from "react-icons/fa6";
 
 const Favorites = () => {
   const { favorites } = useContext(LikedMovies);
@@ -15,7 +15,7 @@ const Favorites = () => {
           <p className="flex items-center gap-4 ">
             <i className="font-bold">You Don't have Favorites</i>{" "}
             <span className="text-2xl">
-              <FaFaceSadCry />
+              <PiEmptyBold />
             </span>
           </p>
         ) : (
@@ -24,7 +24,7 @@ const Favorites = () => {
               <i className="font-extrabold">Favorites Movies</i>
               <span className="text-xl">
                 {" "}
-                <ImHappy2 />
+                <FaStar />
               </span>
             </p>
             <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
