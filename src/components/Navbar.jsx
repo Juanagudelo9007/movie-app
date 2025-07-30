@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom"; 
+import ReactDOM from "react-dom";
 
 import { CiMenuBurger } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
@@ -106,7 +106,7 @@ const Navbar = () => {
                 </ul>
               </div>
             </div>,
-            document.body 
+            document.body
           )}
       </div>
     </nav>

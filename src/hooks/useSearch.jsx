@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
+import { useRecentSearches } from "./useRecentSearches";
 
 export const useSearch = (setMovies) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
+  const {addRecent} = useRecentSearches();
 
   const key = "1d3172c68f14f66b46202879691d8367";
 
@@ -41,6 +43,10 @@ export const useSearch = (setMovies) => {
           )
         : result;
       setMovies(filteredMovies);
+filteredMovies.forEach((movie)=>{
+  addRecent(movie)
+})
+
     } catch (err) {
       console.error(err);
       setError(true);
