@@ -5,15 +5,11 @@ import { useRecentSearches } from "./useRecentSearches";
 export const useSearch = (setMovies) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
-  const {addRecent} = useRecentSearches();
+  const { addRecent } = useRecentSearches();
 
   const key = "1d3172c68f14f66b46202879691d8367";
 
   const fetchingMovies = async () => {
-    {
-      /*Error if type numbers or empty */
-    }
-
     if (!input.trim() || !isNaN(Number(input))) {
       setMovies([]);
       setError(true);
@@ -25,10 +21,6 @@ export const useSearch = (setMovies) => {
       const res = await axios.get(
         `https://api.themoviedb.org/3/search/movie?query=${input}&api_key=${key}`
       );
-
-      {
-        /* Error if type asasweu or &%$# */
-      }
 
       if (res.data.results.length === 0) {
         setMovies([]);
@@ -42,11 +34,12 @@ export const useSearch = (setMovies) => {
             m.title.toLowerCase().includes(input.toLowerCase())
           )
         : result;
-      setMovies(filteredMovies);
-filteredMovies.forEach((movie)=>{
-  addRecent(movie)
-})
 
+      if (filteredMovies.length > 0) {
+        addRecent(filteredMovies[0]);
+      }
+
+      setMovies(filteredMovies);
     } catch (err) {
       console.error(err);
       setError(true);

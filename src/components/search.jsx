@@ -31,7 +31,7 @@ const Search = ({ setMovies }) => {
   console.log(input);
 
   return (
-    <div className="h-[60vh] w-full flex justify-center items-center px-4">
+    <div className="min-h-[60px] max-h-[120px] w-full flex justify-center items-center px-4 mt-16 mb-8">
       <div className="flex justify-center gap-5 w-full max-w-md">
         <input
           value={input}
@@ -74,10 +74,10 @@ const Search = ({ setMovies }) => {
                 }}
                 transition={{
                   duration: 0.33,
-                  ease: 'easeOut',
-                  type: 'spring',
+                  ease: "easeOut",
+                  type: "spring",
                   stiffness: 300,
-                  damping: 20
+                  damping: 20,
                 }}
               >
                 close

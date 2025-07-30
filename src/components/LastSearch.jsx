@@ -1,33 +1,29 @@
 import { useRecentSearches } from "../hooks/useRecentSearches";
-import Card from "./Card";
+import SmallCard from "./SmallCard";
 
-const Recent = () => {
+const LastRecent = () => {
   const { recent } = useRecentSearches();
-   console.log('the recent movie is', recent);
+
   return (
-    <div className="flex  justify-center h-[100px]">
-      <div  className="flex justify-center items-center gap-4">
-        {recent.length === 0 ? (
-          <div>
-            <p>
-              <i>No Recent Searches</i>
-            </p>
+    <div className="flex justify-center mb-6">
+      {recent.length === 0 ? (
+        <p>
+          <i>No Recent Searches</i>
+        </p>
+      ) : (
+        <div>
+          <p className="mb-5 text-center font-bold">
+            <i>Recently Searched</i>
+          </p>
+          <div className="flex gap-3 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+            {recent.map((item, index) =>
+              item.movie ? <SmallCard key={index} movie={item.movie} /> : null
+            )}
           </div>
-        ) : (
-          <div>
-            <p>
-                <i>Recently Searched</i>
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
-                {recent.map((movie)=>(
-                    <Card  key={movie.id} movie={movie}/>
-                ))}
-            </div>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default Recent;
+export default LastRecent;
