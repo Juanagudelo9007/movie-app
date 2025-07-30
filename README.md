@@ -62,6 +62,18 @@ This approach provides a clear architecture, facilitates global user state handl
 - Fetches and saves the user's favorite movies in Firestore for data persistence.
 - Provides context to manage favorite movies throughout the app.
 
+## Recent Searches Feature
+
+- Added a custom hook `useRecentSearches` to store information about recently searched movies.
+- Created a `SmallCard` component for rendering small cards of recent search results.
+- Developed a `LastSearch` component to display these recent search cards.
+
+### Notes
+
+This last feature took considerable time and was quite challenging. I am starting to combine Firebase Authentication, Firestore database, and the logic to save recent searches. I needed to ask ChatGPT for help because I am still learning advanced Firebase functions.
+
+Currently, the recent movies do not update in real time and I can only show up to 6 movies due to the Firestore query `limit`. In the future, I plan to implement real-time updates to always show the latest 6 recent searches dynamically.
+
 ## Notes
 
 During refactoring:
@@ -72,11 +84,6 @@ During refactoring:
 
 ## In Progress
 
-- Protected routes
-- Favorites persistence
-- User profile settings
-- Framer Motion animations
-
----
+-Framer motion animation.
 
 WIP project by Juan
