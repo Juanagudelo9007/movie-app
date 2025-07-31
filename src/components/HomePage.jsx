@@ -22,7 +22,7 @@ const {user} = useContext(LoginContext)
 
   console.log(user.displayName);
   return (
-    <div className="min-h-screen bg-no-repeat  bg-fixed bg-cover bg-center bg-[url('hero-bg.png')]">
+    <div className="min-h-screen bg-no-repeat  bg-fixed bg-cover bg-center bg-[url('/hero-bg.png')]">
       <Navbar />
       {user?.displayName && welcomeMessage && (
         <div className="flex justify-center  bg-transparent">

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Search from "../components/Search";
 import Card from "../components/Card";
-import LastSearch from '../components/LastSearch'
+import LastSearch from "../components/LastSearch";
 
 function Home() {
   const [movies, setMovies] = useState([]);
 
   return (
-    <div className="min-h-screen bg-no-repeat  bg-fixed bg-cover bg-center bg-[url('hero-bg.png')]">
+    <div className="min-h-screen">
       <Search setMovies={setMovies} />
       <LastSearch />
       <div className="flex justify-center">

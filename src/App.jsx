@@ -1,6 +1,7 @@
 import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import { LoginContext } from "./Context/UserLogin";
+import { AnimatePresence, motion } from "framer-motion";
 import { useContext } from "react";
 import {  useEffect } from "react";
 import { app } from "./firebase/firebase";
@@ -23,7 +24,36 @@ const App = () => {
     }, []);
   
 
-  return <div>{user ? <PrivateRoutes /> : <Login />}</div>;
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      {user ? (
+        <motion.div
+          key="private"
+          initial={{ opacity: 0, scale: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          style={{ transformOrigin: "center" }}
+        >
+          <PrivateRoutes />
+        </motion.div>
+      ) : (
+        <motion.div
+          key="login"
+          initial={{ opacity: 0, scale: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          style={{ transformOrigin: "center" }}
+        >
+          <Login />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 };
 
 export default App;
+
+
+ 

@@ -46,7 +46,7 @@ export const useRecentSearches = () => {
         collection(db, "recentSearched"),
         where("userId", "==", userId),
         orderBy("createdAt", "desc"),
-        limit(6)
+        limit(5)
       );
 
       const querySnapshot = await getDocs(q);

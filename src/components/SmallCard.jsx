@@ -7,7 +7,7 @@ const SmallCard = ({ movie }) => {
 
   return (
     <div className=" bg-transparent p-1">
-      <div className="w-[40px]  sm:w-[60px] md:w-[80px] aspect-[2/3] rounded-md shadow-[0_0_12px_rgba(154,99,248,0.6)] overflow-hidden flex flex-shrink-0">
+      <div className="w-[50px]  sm:w-[60px] md:w-[80px] aspect-[2/3] rounded-md shadow-[0_0_12px_rgba(154,99,248,0.6)] overflow-hidden flex cursor-pointer">
         <img
           src={posterUrl}
           className="w-full aspect-[2/3] object-cover"

@@ -13,7 +13,7 @@ const Login = () => {
   } = useAuthForm();
 
   return (
-    <div className="relative min-h-screen bg-cover bg-center flex justify-center items-center bg-[url('bg.jpg')]">
+    <div className="relative min-h-screen bg-cover bg-center flex justify-center items-center bg-[url('/bg.jpg')]">
       {/* Error message. */}
       {error && (
         <div className="absolute z-30  bg-black/40 backdrop-blur-xl w-[250px] h-[120px] flex  flex-col gap-3 justify-center items-center rounded-sm">
