@@ -17,7 +17,7 @@ const LastRecent = () => {
           </p>
           <div className="flex gap-3 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
             {recent.map((item, index) =>
-              item.movie ? <SmallCard key={index} movie={item.movie} /> : null
+              item.movie ? <SmallCard key={index} movie={item.movie} index={index}/> : null
             )}
           </div>
         </div>

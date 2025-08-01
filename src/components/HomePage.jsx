@@ -28,7 +28,7 @@ const {user} = useContext(LoginContext)
       {user?.displayName && welcomeMessage && (
         <div className="flex justify-center  bg-transparent">
           <div className=" w-[250px] h-[50px] bg-transparent flex justify-center items-center ">
-            <p className="text-white text-md sm:text-2xl font-bold">
+            <p className="text-white text-md sm:text-2xl font-bold mt-8">
               Welcome {user?.displayName}
             </p>
           </div>

@@ -1,19 +1,21 @@
 import React, { useContext } from "react";
 import { GoHeart } from "react-icons/go";
 import { FcLike } from "react-icons/fc";
-import {LikedMovies} from "../Context/FavoriteMovies";
+import { LikedMovies } from "../Context/FavoriteMovies";
+import { motion } from "framer-motion";
 
+function Card({ movie, index }) {
+  const { favorites, toggleFav } = useContext(LikedMovies);
 
-
-
-function Card({ movie }) {
-const { favorites, toggleFav,  } =
-  useContext(LikedMovies);
-
-  const fav = favorites.some(f => f.id === movie.id)
+  const fav = favorites.some((f) => f.id === movie.id);
 
   return (
-    <div className="relative w-[200px] aspect-[2/3] bg-slate-900 text-white rounded-sm text-center overflow-hidden group font-montserrat shadow-[0_0_12px_rgba(255,255,255,0.6)]">
+    <motion.div
+      className="relative w-[200px] aspect-[2/3] bg-slate-900 text-white rounded-sm text-center overflow-hidden group font-montserrat shadow-[0_0_12px_rgba(255,255,255,0.6)]"
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, delay: index * 0.4, ease: "easeOut" }}
+    >
       <button
         className="absolute top-1 right-2 z-20 cursor-pointer text-xl"
         onClick={() => toggleFav(movie)}
@@ -40,7 +42,7 @@ const { favorites, toggleFav,  } =
           <span>{movie.release_date}</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
