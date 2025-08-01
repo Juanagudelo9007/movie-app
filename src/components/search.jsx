@@ -31,7 +31,12 @@ const Search = ({ setMovies }) => {
   console.log(input);
 
   return (
-    <div className="min-h-[60px] max-h-[120px] w-full flex justify-center items-center px-4 mt-16 mb-8">
+    <motion.div className="min-h-[60px] max-h-[120px] w-full flex justify-center items-center px-4 mt-16 mb-8"
+    initial={{opacity: 0, scale:0, filter: 'blur(10px)'}}
+    animate={{opacity: 1, scale: 1, filter:'blur(0px)'}}
+    transition={{duration: 0.8, ease: 'easeOut'}}
+    viewport={{once: true}}
+    >
       <div className="flex justify-center gap-5 w-full max-w-md">
         <input
           value={input}
@@ -86,7 +91,7 @@ const Search = ({ setMovies }) => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
