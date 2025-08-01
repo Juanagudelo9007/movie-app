@@ -19,7 +19,12 @@ const Navbar = () => {
   const { openMenu, isOpen, setIsOpen, closeSesion } = useSesion();
 
   return (
-    <nav className=" w-full p-2 shadow-[0_0_8px_rgba(255,255,255,0.6)] bg-white/10 backdrop-blur-sm font-montserrat">
+    <motion.nav className=" w-full p-2 shadow-[0_0_8px_rgba(255,255,255,0.6)] bg-white/10 backdrop-blur-sm font-montserrat"
+    initial={{opacity: 0, y:-80}}
+    animate={{opacity: 1, y:0}}
+    transition={{duration: 0.7}}
+    viewport={{once: true}}
+    >
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div>Logo</div>
@@ -109,7 +114,7 @@ const Navbar = () => {
             document.body
           )}
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
