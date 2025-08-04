@@ -4,7 +4,7 @@ import { CiMenuBurger } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
 import { useSesion } from "../hooks/useSesion";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { id: 1, title: "Home", link: "/home" },
@@ -63,57 +63,63 @@ const Navbar = () => {
           {!isOpen && <CiMenuBurger className="cursor-pointer" />}
         </button>
         {/* Mobile Menu Overlay*/}
-        {isOpen &&
-          ReactDOM.createPortal(
-            <div className="md:hidden w-[200px] fixed top-2 right-0 bg-[#070118]/60 backdrop-blur-3xl text-white rounded-l-sm p-2 h-[150px] z-60">
-              <div className="relative flex h-full items-center">
-                <ul className="flex flex-col gap-3  ml-3">
-                  {links.map((l) => (
-                    <li key={l.id}>
-                      <Link to={l.link}>{l.title}</Link>
-                    </li>
-                  ))}
-                  <motion.button
-                    className="absolute top-1 right-1 cursor-pointer hover:text-red-700 duration-300"
-                    onClick={() => setIsOpen(false)}
-                    whileTap={{
-                      scale: 0.45,
-                    }}
-                    transition={{
-                      duration: 0.33,
-                      ease: "easeOut",
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 20,
-                    }}
-                  >
-                    <IoCloseSharp />
-                  </motion.button>
-                  <motion.button
-                    className="bg-[#8863F8] rounded-sm text-[12px] cursor-pointer font-bold"
-                    onClick={() => {
-                      console.log("clickeado");
-                      closeSesion();
-                    }}
-                    whileHover={{
-                      backgroundColor: "#5B27F5",
-                    }}
-                    whileTap={{ scale: 0.75 }}
-                    transition={{
-                      duration: 0.33,
-                      ease: "easeOut",
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 20,
-                    }}
-                  >
-                    Log out
-                  </motion.button>
-                </ul>
-              </div>
-            </div>,
-            document.body
-          )}
+      
+          {isOpen &&
+            ReactDOM.createPortal(
+              <div className="md:hidden w-[200px] fixed top-2 right-0 bg-[#070118]/60 backdrop-blur-3xl text-white rounded-l-sm p-2 h-[150px] z-60"
+              initial={{opacity:0, x:50}}
+              animate={{opacity:1, x: 0}}
+              exit={{opacity: 0, x: 50}}
+              >
+                <div className="relative flex h-full items-center">
+                  <ul className="flex flex-col gap-3  ml-3">
+                    {links.map((l) => (
+                      <li key={l.id}>
+                        <Link to={l.link}>{l.title}</Link>
+                      </li>
+                    ))}
+                    <motion.button
+                      className="absolute top-1 right-1 cursor-pointer hover:text-red-700 duration-300"
+                      onClick={() => setIsOpen(false)}
+                      whileTap={{
+                        scale: 0.45,
+                      }}
+                      transition={{
+                        duration: 0.33,
+                        ease: "easeOut",
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 20,
+                      }}
+                    >
+                      <IoCloseSharp />
+                    </motion.button>
+                    <motion.button
+                      className="bg-[#8863F8] rounded-sm text-[12px] cursor-pointer font-bold"
+                      onClick={() => {
+                        console.log("clickeado");
+                        closeSesion();
+                      }}
+                      whileHover={{
+                        backgroundColor: "#5B27F5",
+                      }}
+                      whileTap={{ scale: 0.75 }}
+                      transition={{
+                        duration: 0.33,
+                        ease: "easeOut",
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
+                    >
+                      Log out
+                    </motion.button>
+                  </ul>
+                </div>
+              </div>,
+              document.body
+            )}
+        
       </div>
     </motion.nav>
   );

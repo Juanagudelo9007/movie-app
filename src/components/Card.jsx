@@ -14,7 +14,7 @@ function Card({ movie, index }) {
       className="relative w-[200px] aspect-[2/3] bg-slate-900 text-white rounded-sm text-center overflow-hidden group font-montserrat shadow-[0_0_12px_rgba(255,255,255,0.6)]"
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1, delay: index * 0.4, ease: "easeOut" }}
+      transition={{ duration: 1.4, delay: index * 0.4, ease: "easeOut" }}
     >
       <button
         className="absolute top-1 right-2 z-20 cursor-pointer text-xl"

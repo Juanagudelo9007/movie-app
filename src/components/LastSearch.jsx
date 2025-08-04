@@ -5,7 +5,7 @@ const LastRecent = () => {
   const { recent } = useRecentSearches();
 
   return (
-    <div className="flex justify-center mb-6">
+    <div className="flex justify-center mb-12 h-[150px] ">
       {recent.length === 0 ? (
         <p>
           <i>No Recent Searches</i>
@@ -17,7 +17,9 @@ const LastRecent = () => {
           </p>
           <div className="flex gap-3 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
             {recent.map((item, index) =>
-              item.movie ? <SmallCard key={index} movie={item.movie} index={index}/> : null
+              item.movie ? (
+                <SmallCard key={index} movie={item.movie} index={index} />
+              ) : null
             )}
           </div>
         </div>

@@ -1,6 +1,6 @@
-import { easeOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-const SmallCard = ({ movie,index }) => {
+const SmallCard = ({ movie, index }) => {
   if (!movie) return null;
 
   const posterUrl = movie.poster_path
@@ -8,10 +8,11 @@ const SmallCard = ({ movie,index }) => {
     : "https://via.placeholder.com/100x150?text=No+Image";
 
   return (
-    <motion.div className=" bg-transparent p-1 mb-10"
-    initial={{opacity:0, scale: 0}}
-    animate={{opacity: 1, scale: 0.9}}
-    transition={{duration: 0.3, delay: index * 0.4, ease: "easeOut"}}
+    <motion.div
+      className=" bg-transparent p-1 mb-10"
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, delay: index * 0.5, ease: "easeOut" }}
     >
       <div className="w-[50px]  sm:w-[60px] md:w-[80px] aspect-[2/3] rounded-md shadow-[0_0_12px_rgba(154,99,248,0.6)] overflow-hidden flex cursor-pointer">
         <img
