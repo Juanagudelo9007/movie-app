@@ -14,11 +14,11 @@ useEffect(() => {
 }, []);
    
   return (
-    <div className="flex justify-center flex-col">
+    <div className="flex justify-center flex-col ">
       <div className="flex justify-center mt-8">
         {favorites.length === 0 ? (
-          <p className="flex items-center gap-4 ">
-            <i className="font-bold">You Don't have Favorites</i>{" "}
+          <p className="flex items-center gap-4  text-[#b898ea]">
+            <i className="font-bold text-[#b3a8d6]">You Don't have Favorites</i>{" "}
             <span className="text-2xl">
               <PiEmptyBold />
             </span>
@@ -26,7 +26,7 @@ useEffect(() => {
         ) : (
           <div className="flex flex-col items-center gap-6">
             <p className="flex items-center gap-4">
-              <i className="font-extrabold">Favorites Movies</i>
+              <i className="font-extrabold text-[#b3a8d6]">Favorites Movies</i>
               <span className="text-xl">
                 {" "}
                 <FaStar />

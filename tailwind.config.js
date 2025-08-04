@@ -7,6 +7,9 @@ export default {
         sans: ["Inter", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
       },
+      colors: {
+        customPurple: "#5B27F5",
+      },
     },
   },
   plugins: [],
