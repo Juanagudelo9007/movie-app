@@ -1,9 +1,8 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import {  Route, Routes, } from "react-router-dom";
 import HomePage from "../components/HomePage";
 import Home from "../pages/Home";
 import Favorites from "../pages/Favorites";
-
 
 const PrivateRoutes = () => {
   return (

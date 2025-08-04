@@ -1,18 +1,16 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import { Outlet } from "react-router-dom";
-import {LoginContext} from '../Context/UserLogin'
-import { useContext } from "react"
-
-
-
-
+import { Outlet, useLocation } from "react-router-dom";
+import { LoginContext } from "../Context/UserLogin";
+import { useContext } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HomePage = () => {
   const [welcomeMessage, setWelcomeMessage] = useState(true);
+  const location = useLocation();
 
-const {user} = useContext(LoginContext)
+  const { user } = useContext(LoginContext);
 
   useEffect(() => {
     const showMesssage = setTimeout(() => {
@@ -34,7 +32,16 @@ const {user} = useContext(LoginContext)
           </div>
         </div>
       )}
-      <Outlet />
+      <AnimatePresence>
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0, y: -80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Outlet />
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

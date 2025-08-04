@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import FavoriteMovies from "./Context/FavoriteMovies.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  
     <BrowserRouter>
       <UserLogin>
         <FavoriteMovies>
@@ -15,5 +15,5 @@ createRoot(document.getElementById("root")).render(
         </FavoriteMovies>
       </UserLogin>
     </BrowserRouter>
-  </StrictMode>
+  
 );

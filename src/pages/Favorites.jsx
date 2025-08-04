@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import Card from "../components/Card";
 import { useContext } from "react";
 import { LikedMovies } from "../Context/FavoriteMovies";
@@ -7,7 +8,11 @@ import { FaStar } from "react-icons/fa6";
 
 const Favorites = () => {
   const { favorites } = useContext(LikedMovies);
-
+  
+useEffect(() => {
+  console.log("Favorites mounted");
+}, []);
+   
   return (
     <div className="flex justify-center flex-col">
       <div className="flex justify-center mt-8">
